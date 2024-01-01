@@ -1999,6 +1999,7 @@
 #include "code\game\machinery\ai_slipper.dm"
 #include "code\game\machinery\airlock_control.dm"
 #include "code\game\machinery\announcement_system.dm"
+#include "code\game\machinery\anomaly_spawner.dm"
 #include "code\game\machinery\autolathe.dm"
 #include "code\game\machinery\bank_machine.dm"
 #include "code\game\machinery\barsigns.dm"
