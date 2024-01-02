@@ -12,4 +12,5 @@
 	var/type = pick(subtypesof(/datum/round_event/anomaly))
 	var/datum/round_event/anomaly/my_event = new type()
 	my_event.setup_anomaly_properties(drops_core = FALSE)
+	my_event.setup()
 	my_event.start()
