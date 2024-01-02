@@ -17,6 +17,8 @@
 	var/obj/effect/anomaly/anomaly_path = /obj/effect/anomaly/flux
 	///The admin-chosen spawn location.
 	var/turf/spawn_location
+	var/new_lifespan
+	var/drops_core
 
 /datum/round_event/anomaly/setup()
 
@@ -40,14 +42,20 @@
 
 	var/newAnomaly
 	if(anomaly_turf)
-		newAnomaly = new anomaly_path(anomaly_turf)
+		newAnomaly = new anomaly_path(anomaly_turf, new_lifespan, drops_core)
 	if (newAnomaly)
 		apply_anomaly_properties(newAnomaly)
 		announce_to_ghosts(newAnomaly)
 
+/datum/round_event/anomaly/proc/setup_anomaly_properties(new_lifespan = 0, drops_core = TRUE)
+	src.new_lifespan = new_lifespan
+	src.drops_core = drops_core
+
 /// Make any further post-creation modifications to the anomaly
 /datum/round_event/anomaly/proc/apply_anomaly_properties(obj/effect/anomaly/new_anomaly)
-	return
+	if(new_lifespan)
+		new_anomaly.lifespan = new_lifespan
+	new_anomaly.drops_core = drops_core
 
 /datum/event_admin_setup/set_location/anomaly
 	input_text = "Spawn anomaly at your current location?"

@@ -9,4 +9,5 @@
 	if(.)
 		return
 	var/datum/round_event/anomaly/my_event = new /datum/round_event/anomaly/anomaly_bluespace
+	my_event.setup_anomaly_properties(drops_core = FALSE)
 	my_event.start()
