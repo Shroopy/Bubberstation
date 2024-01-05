@@ -4,15 +4,7 @@
 	icon = 'icons/testing/greyscale_error.dmi'
 	//icon_state = "ecto_sniffer"
 	var/locked = TRUE
-	var/list/obj/effect/anomaly/anomalies
-	var/obj/item/card/id
-	var/list/obj/item/card/used_ids = list()
-	var/static/datum/anomaly_placer/placer = new()
-	req_one_access = list(ACCESS_SCIENCE)
-
-/obj/machinery/anomaly_spawner/Initialize(mapload)
-	. = ..()
-	anomalies = list(
+	var/static/list/obj/effect/anomaly/anomalies = list(
 		/obj/effect/anomaly/bioscrambler,
 		/obj/effect/anomaly/bluespace,
 		/obj/effect/anomaly/dimensional,
@@ -23,6 +15,10 @@
 		// /obj/effect/anomaly/pyro, // Probably too dangerous
 		// /obj/effect/anomaly/bhole, // Definitely too dangerous
 	)
+	var/obj/item/card/id
+	var/list/obj/item/card/used_ids = list()
+	var/static/datum/anomaly_placer/placer = new()
+	req_one_access = list(ACCESS_SCIENCE)
 
 /obj/machinery/anomaly_spawner/attack_hand(mob/user, list/modifiers)
 	. = ..()
