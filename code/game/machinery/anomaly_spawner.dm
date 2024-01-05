@@ -4,15 +4,17 @@
 	icon = 'icons/testing/greyscale_error.dmi'
 	//icon_state = "ecto_sniffer"
 	var/locked = TRUE
-	var/list/anomaly_events /// Cache of anomaly events for speed
+	var/list/obj/effect/anomaly/anomalies /// Cache of anomalies for speed
 	var/obj/item/card/id
-	var/static/list/used_ids
+	var/list/obj/item/card/used_ids = list()
+	var/static/datum/anomaly_placer/placer = new()
 	req_one_access = list(ACCESS_SCIENCE)
 
 /obj/machinery/anomaly_spawner/Initialize(mapload)
 	. = ..()
-	anomaly_events = subtypesof(/datum/round_event/anomaly)
-	anomaly_events -= /datum/round_event/anomaly/anomaly_vortex // Remove the black hole anomaly from the list because it's too dangerous for crew to summon on purpose
+	anomalies = subtypesof(/obj/effect/anomaly)
+	anomalies -= /obj/effect/anomaly/bhole // Remove the black hole anomaly from the list because it's too dangerous for crew to summon on purpose
+	// TODO remove big anomalies
 
 /obj/machinery/anomaly_spawner/attack_hand(mob/user, list/modifiers)
 	. = ..()
@@ -22,12 +24,14 @@
 	if(locked)
 		balloon_alert(user, "locked!")
 		playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE)
-	else
-		var/type = pick(anomaly_events)
-		var/datum/round_event/anomaly/my_event = new type(FALSE)
-		my_event.setup_anomaly_properties(drops_core = FALSE)
-		my_event.setup()
-		my_event.start()
+	else // Spawn anomaly
+		var/area/impact_area = placer.findValidArea()
+		var/turf/anomaly_turf = placer.findValidTurf(impact_area)
+		var/type = pick(anomalies)
+		var/obj/effect/anomaly/newAnomaly = new type(anomaly_turf, 0, FALSE)
+		priority_announce("An anomaly has been summoned by the science team, impacting in [impact_area.name].", "Anomaly Alert", ANNOUNCER_ANOMALIES)
+		used_ids += id
+		used_ids[used_ids[used_ids.len]] = newAnomaly
 		balloon_alert(user, "summoning anomaly!")
 		locked = TRUE
 
@@ -44,6 +48,16 @@
 	if(locked)
 		var/obj/item/card/id = I.GetID()
 		if(id)
+			if(used_ids.len != 0)
+				var/index = used_ids.Find(id)
+				var/obj/effect/anomaly/anomaly = used_ids[used_ids[index]]
+				if(anomaly.is_stable() || QDELETED(anomaly))
+					used_ids.Remove(id)
+				else
+					balloon_alert(user, "reused id!")
+					to_chat(user, span_warning("This ID has already been used to summon an anomaly. You must stabilize or neutralize it before you can summon another!"))
+					playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE)
+					return
 			if(check_access(id))
 				src.id = id
 				locked = FALSE
@@ -53,6 +67,5 @@
 			else
 				balloon_alert(user, "insufficient access.")
 				playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE)
-			return
 	else
 		balloon_alert(user, "already unlocked!")

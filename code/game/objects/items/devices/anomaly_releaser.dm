@@ -1,7 +1,7 @@
-///Use on an anomaly core to "awake" the anomaly and stabilize it
+///Use on an anomaly core to "awake" the anomaly and partially stabilize it
 /obj/item/anomaly_releaser
 	name = "anomaly releaser"
-	desc = "Single-use injector that releases and stabilizes anomalies by injecting an unknown substance."
+	desc = "Single-use injector that releases and partially stabilizes anomalies by injecting an unknown substance."
 	icon = 'icons/obj/devices/syndie_gadget.dmi'
 	icon_state = "anomaly_releaser"
 	inhand_icon_state = "stimpen"

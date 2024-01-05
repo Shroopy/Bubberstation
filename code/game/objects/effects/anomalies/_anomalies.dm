@@ -116,3 +116,7 @@
 		drops_core = FALSE
 		QDEL_NULL(aSignal)
 	immobile = anchor
+
+///Returns if an anomaly is fully stable, meaning it is both immortal and immobile
+/obj/effect/anomaly/proc/is_stable()
+	return immortal && immobile
