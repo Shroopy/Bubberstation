@@ -4,7 +4,7 @@
 	icon = 'icons/testing/greyscale_error.dmi'
 	//icon_state = "ecto_sniffer"
 	var/locked = TRUE
-	var/list/obj/effect/anomaly/anomalies /// Cache of anomalies for speed
+	var/list/obj/effect/anomaly/anomalies
 	var/obj/item/card/id
 	var/list/obj/item/card/used_ids = list()
 	var/static/datum/anomaly_placer/placer = new()
@@ -12,9 +12,17 @@
 
 /obj/machinery/anomaly_spawner/Initialize(mapload)
 	. = ..()
-	anomalies = subtypesof(/obj/effect/anomaly)
-	anomalies -= /obj/effect/anomaly/bhole // Remove the black hole anomaly from the list because it's too dangerous for crew to summon on purpose
-	// TODO remove big anomalies
+	anomalies = list(
+		/obj/effect/anomaly/bioscrambler,
+		/obj/effect/anomaly/bluespace,
+		/obj/effect/anomaly/dimensional,
+		// /obj/effect/anomaly/ectoplasm, // Too dangerous? Not sure
+		/obj/effect/anomaly/flux,
+		/obj/effect/anomaly/grav,
+		/obj/effect/anomaly/hallucination,
+		// /obj/effect/anomaly/pyro, // Probably too dangerous
+		// /obj/effect/anomaly/bhole, // Definitely too dangerous
+	)
 
 /obj/machinery/anomaly_spawner/attack_hand(mob/user, list/modifiers)
 	. = ..()
