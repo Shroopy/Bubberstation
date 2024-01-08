@@ -120,3 +120,6 @@
 ///Returns if an anomaly is fully stable, meaning it is both immortal and immobile
 /obj/effect/anomaly/proc/is_stable()
 	return immortal && immobile
+
+// SHROOPYTODO
+// add link to techweb, procs for linking and unlinking, make destroy unlink

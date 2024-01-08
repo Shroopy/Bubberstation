@@ -10,7 +10,7 @@
 		/obj/effect/anomaly/dimensional,
 		// /obj/effect/anomaly/ectoplasm, // Too dangerous? Not sure
 		/obj/effect/anomaly/flux,
-		/obj/effect/anomaly/grav,
+		// /obj/effect/anomaly/grav, // Possibly too dangerous, nobody might want to keep it around
 		/obj/effect/anomaly/hallucination,
 		// /obj/effect/anomaly/pyro, // Probably too dangerous
 		// /obj/effect/anomaly/bhole, // Definitely too dangerous
