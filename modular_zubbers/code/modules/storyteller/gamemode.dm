@@ -766,7 +766,7 @@ SUBSYSTEM_DEF(gamemode)
 				var/next = 0
 				var/last_points = last_point_gains[track]
 				if(last_points)
-					next = round((upper - lower) / last_points / STORYTELLER_WAIT_TIME * 40 / 6) / 10
+					next = round((upper - lower) / last_points / 60, 0.1) // points / (points/second) / (seconds/minute) = minutes
 				dat += "<tr style='vertical-align:top; background-color: [background_cl];'>"
 				dat += "<td>[track]</td>" //Track
 				dat += "<td>[percent]% ([lower]/[upper])</td>" //Progress
