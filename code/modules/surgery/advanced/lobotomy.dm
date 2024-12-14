@@ -67,7 +67,7 @@ BUBBER REMOVAL END */
 
 	)
 	preop_sound = 'sound/items/taperecorder/tape_flip.ogg'
-	success_sound = 'sound/weapons/taser.ogg' // BUBBER EDIT
+	success_sound = 'sound/items/weapons/taser.ogg' // BUBBER EDIT
 
 /datum/surgery_step/lobotomize/tool_check(mob/user, obj/item/tool)
 	if(implement_type == /obj/item && !tool.get_sharpness())

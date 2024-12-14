@@ -98,11 +98,11 @@
 /datum/surgery_step/manipulate_organs/internal/mechanic
 	implements_extract = list(TOOL_HEMOSTAT = 75, TOOL_CROWBAR = 100, /obj/item/kitchen/fork = 55)
 	name = "manipulate hardware (crowbar/hardware)"
-	preop_sound = 'sound/items/crowbar_prying.ogg'
-	success_sound = 'sound/items/crowbar.ogg'
+	preop_sound = 'sound/items/tools/crowbar_prying.ogg'
+	success_sound = 'sound/items/tools/crowbar.ogg'
 
 /datum/surgery_step/manipulate_organs/external/mechanic
 	implements_extract = list(TOOL_HEMOSTAT = 75, TOOL_CROWBAR = 100, /obj/item/kitchen/fork = 55)
 	name = "manipulate chassis features (crowbar/feature)"
-	preop_sound = 'sound/items/crowbar_prying.ogg'
-	success_sound = 'sound/items/crowbar.ogg'
+	preop_sound = 'sound/items/tools/crowbar_prying.ogg'
+	success_sound = 'sound/items/tools/crowbar.ogg'

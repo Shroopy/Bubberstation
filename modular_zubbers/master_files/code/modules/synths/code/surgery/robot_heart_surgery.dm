@@ -7,5 +7,5 @@
 		/obj/item/stack/package_wrap = 15,
 		TOOL_SCALPEL = 45,
 	)
-	preop_sound = 'sound/items/ratchet_slow.ogg'
-	success_sound = 'sound/machines/doorclick.ogg'
+	preop_sound = 'sound/items/tools/ratchet_slow.ogg'
+	success_sound = 'sound/machines/airlock/doorclick.ogg'

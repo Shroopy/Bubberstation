@@ -14,7 +14,7 @@
 		TOOL_HEMOSTAT = 10,
 	)
 	time = 2.4 SECONDS
-	success_sound = 'sound/items/screwdriver2.ogg'
+	success_sound = 'sound/items/tools/screwdriver2.ogg'
 
 /datum/surgery_step/reattach_plating/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	display_results(
