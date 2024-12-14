@@ -49,6 +49,13 @@ BUBBER REMOVAL END */
 		return FALSE
 	return TRUE
 
+/datum/surgery/revival/mechanic/is_valid_target(mob/living/patient)
+	if (iscarbon(patient))
+		return FALSE
+	if (!(patient.mob_biotypes & (MOB_ROBOTIC|MOB_HUMANOID)))
+		return FALSE
+	return TRUE
+
 /datum/surgery_step/revive
 	name = "shock brain (defibrillator)"
 	implements = list(
@@ -58,8 +65,8 @@ BUBBER REMOVAL END */
 		/obj/item/gun/energy = 60)
 	repeatable = TRUE
 	time = 5 SECONDS
-	success_sound = 'sound/magic/lightningbolt.ogg'
-	failure_sound = 'sound/magic/lightningbolt.ogg'
+	success_sound = 'sound/effects/magic/lightningbolt.ogg'
+	failure_sound = 'sound/effects/magic/lightningbolt.ogg'
 
 /datum/surgery_step/revive/tool_check(mob/user, obj/item/tool)
 	. = TRUE
@@ -93,7 +100,7 @@ BUBBER REMOVAL END */
 
 /datum/surgery_step/revive/play_preop_sound(mob/user, mob/living/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	if(istype(tool, /obj/item/shockpaddles))
-		playsound(tool, 'sound/machines/defib_charge.ogg', 75, 0)
+		playsound(tool, 'sound/machines/defib/defib_charge.ogg', 75, 0)
 	else
 		..()
 

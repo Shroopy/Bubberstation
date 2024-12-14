@@ -72,10 +72,10 @@ BUBBER REMOVAL END */
 		/obj/item/stack/cable_coil = 15
 		BUBBER REMOVAL END */
 		)
-	// BUBBER ADDITION START
+	// BUBBER EDIT START
 	preop_sound = 'sound/items/taperecorder/tape_flip.ogg'
 	success_sound = 'sound/items/taperecorder/taperecorder_close.ogg'
-	// BUBBER ADDITION END
+	// BUBBER EDIT END
 
 /datum/surgery_step/brainwash/sleeper_agent/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	objective = pick(possible_objectives)

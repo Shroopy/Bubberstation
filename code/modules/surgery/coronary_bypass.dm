@@ -14,7 +14,7 @@
 
 /* BUBBER REMOVAL START
 /datum/surgery/gastrectomy/mechanic
-	name = "Engine Diagnostic (Heart)" // Nova Edit: Original name = "Engine Diagnostic"
+	name = "Engine Diagnostic (Heart Repair)" // SKYRAT EDIT: Original name = "Engine Diagnostic"
 	requires_bodypart_type = BODYTYPE_ROBOTIC
 	steps = list(
 		/datum/surgery_step/mechanic_open,
@@ -43,9 +43,9 @@ BUBBER REMOVAL END */
 		/obj/item/knife = 45,
 		/obj/item/shard = 25)
 	time = 16
-	preop_sound = 'sound/surgery/scalpel1.ogg'
-	success_sound = 'sound/surgery/scalpel2.ogg'
-	failure_sound = 'sound/surgery/organ2.ogg'
+	preop_sound = 'sound/items/handling/surgery/scalpel1.ogg'
+	success_sound = 'sound/items/handling/surgery/scalpel2.ogg'
+	failure_sound = 'sound/items/handling/surgery/organ2.ogg'
 	surgery_effects_mood = TRUE
 
 /datum/surgery_step/incise_heart/mechanic
@@ -56,8 +56,8 @@ BUBBER REMOVAL END */
 		/obj/item/melee/energy/sword = 65,
 		/obj/item/knife = 45,
 		/obj/item/shard = 35)
-	preop_sound = 'sound/items/ratchet.ogg'
-	success_sound = 'sound/machines/doorclick.ogg'
+	preop_sound = 'sound/items/tools/ratchet.ogg'
+	success_sound = 'sound/machines/airlock/doorclick.ogg'
 
 /datum/surgery_step/incise_heart/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	display_results(
@@ -109,9 +109,9 @@ BUBBER REMOVAL END */
 		/obj/item/stack/package_wrap = 15,
 		/obj/item/stack/cable_coil = 5)
 	time = 90
-	preop_sound = 'sound/surgery/hemostat1.ogg'
-	success_sound = 'sound/surgery/hemostat1.ogg'
-	failure_sound = 'sound/surgery/organ2.ogg'
+	preop_sound = 'sound/items/handling/surgery/hemostat1.ogg'
+	success_sound = 'sound/items/handling/surgery/hemostat1.ogg'
+	failure_sound = 'sound/items/handling/surgery/organ2.ogg'
 
 /datum/surgery_step/coronary_bypass/mechanic
 	name = "perform maintenance (hemostat or wrench)"
@@ -121,8 +121,8 @@ BUBBER REMOVAL END */
 		TOOL_WIRECUTTER = 35,
 		/obj/item/stack/package_wrap = 15,
 		/obj/item/stack/cable_coil = 5)
-	preop_sound = 'sound/items/ratchet.ogg'
-	success_sound = 'sound/machines/doorclick.ogg'
+	preop_sound = 'sound/items/tools/ratchet.ogg'
+	success_sound = 'sound/machines/airlock/doorclick.ogg'
 
 /datum/surgery_step/coronary_bypass/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	display_results(

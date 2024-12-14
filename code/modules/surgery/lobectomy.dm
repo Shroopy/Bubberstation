@@ -40,9 +40,9 @@ BUBBER REMOVAL END */
 		/obj/item/knife = 45,
 		/obj/item/shard = 35)
 	time = 42
-	preop_sound = 'sound/surgery/scalpel1.ogg'
-	success_sound = 'sound/surgery/organ1.ogg'
-	failure_sound = 'sound/surgery/organ2.ogg'
+	preop_sound = 'sound/items/handling/surgery/scalpel1.ogg'
+	success_sound = 'sound/items/handling/surgery/organ1.ogg'
+	failure_sound = 'sound/items/handling/surgery/organ2.ogg'
 	surgery_effects_mood = TRUE
 
 /datum/surgery_step/lobectomy/mechanic
@@ -53,8 +53,8 @@ BUBBER REMOVAL END */
 		/obj/item/melee/energy/sword = 65,
 		/obj/item/knife = 45,
 		/obj/item/shard = 35)
-	preop_sound = 'sound/items/ratchet.ogg'
-	success_sound = 'sound/machines/doorclick.ogg'
+	preop_sound = 'sound/items/tools/ratchet.ogg'
+	success_sound = 'sound/machines/airlock/doorclick.ogg'
 
 /datum/surgery_step/lobectomy/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	display_results(
@@ -70,8 +70,11 @@ BUBBER REMOVAL END */
 	if(ishuman(target))
 		var/mob/living/carbon/human/human_target = target
 		var/obj/item/organ/internal/lungs/target_lungs = human_target.get_organ_slot(ORGAN_SLOT_LUNGS)
-		target_lungs.operated = TRUE
 		human_target.setOrganLoss(ORGAN_SLOT_LUNGS, 60)
+		if(target_lungs)
+			target_lungs.operated = TRUE
+			if(target_lungs.organ_flags & ORGAN_EMP) //If our organ is failing due to an EMP, fix that
+				target_lungs.organ_flags &= ~ORGAN_EMP
 		display_results(
 			user,
 			target,
