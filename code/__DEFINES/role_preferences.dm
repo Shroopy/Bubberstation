@@ -75,6 +75,7 @@
 #define ROLE_REV "Revolutionary"
 #define ROLE_REVENANT "Revenant"
 #define ROLE_SENTIENCE "Sentience Potion Spawn"
+#define ROLE_SENTIENT_XENOARTIFACT "Sentient Xenoartifiact"
 #define ROLE_SYNDICATE "Syndicate"
 
 #define ROLE_CLOWN_OPERATIVE "Clown Operative"

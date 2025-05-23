@@ -38,6 +38,8 @@
 #define COMSIG_MOB_CLIENT_PRE_LIVING_MOVE "mob_client_pre_living_move"
 	/// Should we stop the current living movement attempt
 	#define COMSIG_MOB_CLIENT_BLOCK_PRE_LIVING_MOVE COMPONENT_MOVABLE_BLOCK_PRE_MOVE
+#define COMSIG_MOB_RECEIVE_ARTIFACT "mob_receive_artifact"			//
+	#define COMPONENT_BLOCK_ARTIFACT 1
 
 /// From base of /client/Move(), invoked when a non-living mob is attempting to move: (list/move_args)
 #define COMSIG_MOB_CLIENT_PRE_NON_LIVING_MOVE "mob_client_move_possessed_object"
